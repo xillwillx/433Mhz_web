@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
     srand(time(NULL));
     
     bool CODE_RECEIVED = false;
-
     while(!CODE_RECEIVED) {
         // Is the switch available?
         if (rand() % 2) {
@@ -23,10 +22,9 @@ int main(int argc, char *argv[]) {
             
             // Sleep for two seconds simulating capture event.
             sleep(2);
-
             if (value == 0) {
                 // Unknown encoding
-                printf("%i\n", value);
+                printf("0\n");
             } else {
                 // Simulate receiving a delay
                 int delay = (rand() % 200) + 100;
