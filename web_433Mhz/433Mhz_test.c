@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
                 // Simulate receiving a delay
                 int delay = (rand() % 200) + 100;
                 // "ReceivedValue(),ReceivedDelay()"
-                printf("%i,%i\n", value, delay);
+                printf("%i,%i", value, delay);
                 CODE_RECEIVED = true;
             }
         }
