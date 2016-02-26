@@ -2,5 +2,13 @@
 
 {% block title %}433Mhz{% endblock %}
 {% block content %}
+<h1>433Mhz</h1>
+<hr / >
+<div id="ButtonList">
+</div>
+{% endblock %}
 
+{% block scripts %}
+<script src="{{url_for('static', filename='433Mhz.js')}}></script>
+{{super()}}
 {% endblock %}
