@@ -3,7 +3,7 @@
 {% block title %}433Mhz{% endblock %}
 {% block styles %}
 <style>
-    .remote-btn-group {
+    .button-data {
         height: auto;
         max-height: 400px;
         overflow: auto;
@@ -12,24 +12,31 @@
 {{super()}}
 {% endblock %}
 {% block content %}
-<h1>433Mhz</h1>
-<hr / >
-<div class="col-md-9">
+<div class="container">
+    <h1>433Mhz</h1>
+    <hr / >
+    <div class="button-data">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Button ID</th>
+                    <th>Code</th>
+                    <th>Delay</th>
+                    <th>Name</th>
+                </tr>
+                <tbody id="DataBody">
+                </tbody>
+            </thead>
+        </table>
+    </div>
+    <hr />
     <div class="row">
-        <div class="col-md-3">
-            <div id="ButtonList" class="remote-btn-group">
-            </div>
+        <div class="col-md-6">
+            <button id="AddBtn" class="btn btn-lg btn-success" data-loading-text="Awaiting Signal...">
+                <span class="glyphicon glyphicon-plus"></span>    Add Button
+            </button>
         </div>
-        <div class="col-md-4">
-            <table id="DataTable" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Button ID</th>
-                        <th>Code</th>
-                        <th>Delay</th>
-                    </tr>
-                </thead>
-            </table>
+        <div class="col-md-6">
         </div>
     </div>
 </div>
@@ -37,5 +44,6 @@
 
 {% block scripts %}
 {{super()}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script src="{{url_for('static', filename='433Mhz.js')}}"></script>
 {% endblock %}
