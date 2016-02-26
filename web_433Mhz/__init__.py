@@ -6,4 +6,4 @@ app = Flask(__name__)
 app.config.from_object('config.Config')
 Bootstrap(app)
 
-from 433Mhz import views
+from web_433Mhz import views
