@@ -22,10 +22,8 @@ int main(int argc, char *argv[]) {
             
             // Sleep for two seconds simulating capture event.
             sleep(2);
-            if (value == 0) {
-                // Unknown encoding
-                printf("0\n");
-            } else {
+            // Ignore unknown encoding
+            if (value != 0) {
                 // Simulate receiving a delay
                 int delay = (rand() % 200) + 100;
                 // "ReceivedValue(),ReceivedDelay()"
