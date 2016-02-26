@@ -4,7 +4,7 @@
 #!! ERROR: yth is undefined. Use list command to see defined gitignore types !!#
 
 # Ignore the 433Mhz binary
-433Mhz/433Mhz
+web_433Mhz/433Mhz
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
