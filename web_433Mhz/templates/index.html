@@ -1,14 +1,41 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}433Mhz{% endblock %}
+{% block styles %}
+<style>
+    .remote-btn-group {
+        height: auto;
+        max-height: 400px;
+        overflow: auto;
+    }
+</style>
+{{super()}}
+{% endblock %}
 {% block content %}
 <h1>433Mhz</h1>
 <hr / >
-<div id="ButtonList">
+<div class="col-md-9">
+    <div class="row">
+        <div class="col-md-3">
+            <div id="ButtonList" class="remote-btn-group">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <table id="DataTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Button ID</th>
+                        <th>Code</th>
+                        <th>Delay</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{{url_for('static', filename='433Mhz.js')}}></script>
 {{super()}}
+<script src="{{url_for('static', filename='433Mhz.js')}}"></script>
 {% endblock %}
