@@ -1,4 +1,4 @@
-from 433Mhz import app
+from web_433Mhz import app
 from flask import render_template
 
 @app.route('/', methods=['GET', 'POST'])
