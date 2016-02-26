@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
             sleep(2);
             // Ignore unknown encoding
             if (value != 0) {
+                // Regenerate new value for event
+                value = (rand() % 590000) + 550000;
                 // Simulate receiving a delay
                 int delay = (rand() % 200) + 100;
                 // "ReceivedValue(),ReceivedDelay()"
