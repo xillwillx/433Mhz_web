@@ -2,8 +2,8 @@ var btnID = 1;
 var btnList = [];
 $(document).ready(function() {
     $("#AddBtn").click(function(e) {
+        $("#AddBtn").button('loading');
         $.getJSON('/api/get_code', function(data) {
-            $(this).button('loading');
             data = data['code'].split(',');
             var code = data[0];
             var delay = data[1];
@@ -15,7 +15,7 @@ $(document).ready(function() {
             });
             btnID += 1;
             writeToTable();
-            $(this).button('reset');
+            $("#AddBtn").button('reset');
         });
     });
 });
