@@ -10,8 +10,8 @@ def index():
 
 @app.route('/api/get_code', methods=['GET'])
 def get_code():
-    proc = subprocess.Popen(os.path.abspath('../433Mhz'),\
-            stdout=subprocess.PIPE)
+    cmd = ['sudo', os.path.abspath('./web_433Mhz/433Mhz')]
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     code = proc.communicate()[0].decode('utf-8')    # Grab the stdout
 
     return jsonify({'code': code})
