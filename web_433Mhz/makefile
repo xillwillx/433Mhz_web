@@ -1,2 +1,2 @@
-433Mhz: 433Mhz.cpp
-	gcc -o 433Mhz 433Mhz.cpp
+433Mhz: RCSwitch.o 433Mhz.o
+        $(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
