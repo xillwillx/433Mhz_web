@@ -1,39 +1,30 @@
+include "RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <stdbool.h>
-#include <time.h>
 
-// This is a dummy program to test the 433Mhz binary from xillwillx
-// https://github.com/xillwillx/433Mhz/blob/master/RFSniffer.cpp
-//
-// It replicates certain functions using random numbers from the stdlib
+RCSwitch mySwitch;
 
 int main(int argc, char *argv[]) {
-    srand(time(NULL));
-    
-    bool CODE_RECEIVED = false;
-    while(!CODE_RECEIVED) {
-        // Is the switch available?
-        if (rand() % 2) {
-            // Not at all accurate, but this gives a reasonable error rate
-            // for testing. (Roughly 30%)
-            int value = rand() % 3;
-            
-            // Sleep for two seconds simulating capture event.
-            sleep(2);
-            // Ignore unknown encoding
-            if (value != 0) {
-                // Regenerate new value for event
-                value = (rand() % 590000) + 550000;
-                // Simulate receiving a delay
-                int delay = (rand() % 200) + 100;
-                // "ReceivedValue(),ReceivedDelay()"
-                printf("%i,%i", value, delay);
-                CODE_RECEIVED = true;
-            }
-        }
-    }
 
-    return 0;
-}
+     int PIN = 2;
+
+     if(wiringPiSetup() == -1)
+       return 0;
+
+     mySwitch = RCSwitch();
+     mySwitch.enableReceive(PIN);  // Receiver on interrupt 0 => that is pin #2
+
+     bool CODE_RECEIVED = false;
+     while(!CODE_RECEIVED) {
+      if (mySwitch.available()) {
+
+        int value = mySwitch.getReceivedValue();
+
+        if (value != 0) {
+             printf("%i,%i", value, mySwitch.getReceivedDelay());
+             CODE_RECEIVED = true;
+        }
+        mySwitch.resetAvailable();
+      }
+  }
